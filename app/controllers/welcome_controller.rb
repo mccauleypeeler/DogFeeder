@@ -23,11 +23,13 @@ class WelcomeController < ApplicationController
 
   def setMostRecentCare
     @mostRecentCare = Care.last
-    mostRecentCareHour = @mostRecentCare.created_at.strftime("%I").to_i
-    if mostRecentCareHour >= 0 and mostRecentCareHour <= 12
-      @mostRecentCareTimeOfDay = "morning"
-    else
-      @mostRecentCareTimeOfDay = "evening"
+    if @mostRecentCare
+      mostRecentCareHour = @mostRecentCare.created_at.strftime("%I").to_i
+      if mostRecentCareHour >= 0 and mostRecentCareHour <= 12
+        @mostRecentCareTimeOfDay = "morning"
+      else
+        @mostRecentCareTimeOfDay = "evening"
+      end
     end
   end
 
@@ -43,9 +45,13 @@ class WelcomeController < ApplicationController
   end
 
   def checkCurrentCare
-    if @mostRecentCare.created_at.strftime("%m%d") == @currentTimeObject.strftime("%m%d")
-      if @timeOfDay == @mostRecentCareTimeOfDay
-        return
+    if @mostRecentCare
+      if @mostRecentCare.created_at.strftime("%m%d") == @currentTimeObject.strftime("%m%d")
+        if @timeOfDay == @mostRecentCareTimeOfDay
+          return
+        else
+          @mostRecentCare = Care.create(fed: false, medicated: false, fedAt: @currentTimeObject, medicatedAt: @currentTimeObject)
+        end
       else
         @mostRecentCare = Care.create(fed: false, medicated: false, fedAt: @currentTimeObject, medicatedAt: @currentTimeObject)
       end
