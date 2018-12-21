@@ -6,6 +6,13 @@ class WelcomeController < ApplicationController
       @fedStatus = @mostRecentCare.fed
       @mostRecentCareMedicateTime = @mostRecentCare.medicatedAt.in_time_zone('Eastern Time (US & Canada)')
       @medicatedStatus = @mostRecentCare.medicated
+
+      if @currentTimeObject.strftime("%p") == 'PM'
+        secondLastCare = Care.all[-2]
+        if secondLastCare.created_at.strftime("%p") == 'AM' && secondLastCare.created_at.strftime("%m%d") == @currentTimeObject.strftime("%m%d")
+          @morningCare = secondLastCare
+        end
+      end
   end
 
   def care
@@ -35,8 +42,8 @@ class WelcomeController < ApplicationController
 
   def checkTimeAndReset
     @currentTimeObject = Time.now
-    currentHour = @currentTimeObject.strftime("%I").to_i
-    if currentHour >= 0 and currentHour <= 12
+
+    if @currentTimeObject.strftime("%p") == 'AM'
       @timeOfDay = "morning"
     else
       @timeOfDay = "evening"
