@@ -45,7 +45,6 @@ class WelcomeController < ApplicationController
       @timeOfDay = "morning"
     else
       @timeOfDay = "evening"
-      console
     end
     checkCurrentCare
   end
