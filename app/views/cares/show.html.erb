@@ -3,11 +3,13 @@
 <p>
   <strong>Fed:</strong>
   <%= @care.fed %>
+  <%= @care.fedAt %>
 </p>
 
 <p>
   <strong>Medicated:</strong>
   <%= @care.medicated %>
+  <%= @care.medicatedAt %>
 </p>
 
 <%= link_to 'Edit', edit_care_path(@care) %> |

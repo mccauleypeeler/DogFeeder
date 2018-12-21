@@ -31,8 +31,7 @@ class WelcomeController < ApplicationController
   def setMostRecentCare
     @mostRecentCare = Care.last
     if @mostRecentCare
-      mostRecentCareHour = @mostRecentCare.created_at.strftime("%I").to_i
-      if mostRecentCareHour >= 0 and mostRecentCareHour <= 12
+      if @mostRecentCare.created_at.strftime("%p") == 'AM'
         @mostRecentCareTimeOfDay = "morning"
       else
         @mostRecentCareTimeOfDay = "evening"
@@ -42,18 +41,21 @@ class WelcomeController < ApplicationController
 
   def checkTimeAndReset
     @currentTimeObject = Time.now
-
     if @currentTimeObject.strftime("%p") == 'AM'
       @timeOfDay = "morning"
     else
       @timeOfDay = "evening"
+      console
     end
     checkCurrentCare
   end
 
   def checkCurrentCare
+    # check if there are any cares
     if @mostRecentCare
+      # check if most recent care created was today
       if @mostRecentCare.created_at.strftime("%m%d") == @currentTimeObject.strftime("%m%d")
+        # checks if the current AM/PM matches the last care's AM/PM
         if @timeOfDay == @mostRecentCareTimeOfDay
           return
         else
