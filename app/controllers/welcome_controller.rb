@@ -10,11 +10,11 @@ class WelcomeController < ApplicationController
 
   def care
     if params[:fed]
-      @mostRecentCare.update(fed: true)
+      @mostRecentCare.update(fed: true, fedAt: @currentTimeObject)
       redirect_to root_path
     end
     if params[:medicated]
-      @mostRecentCare.update(medicated: true)
+      @mostRecentCare.update(medicated: true, medicatedAt: @currentTimeObject)
       redirect_to root_path
     end
   end
