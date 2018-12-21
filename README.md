@@ -1,24 +1,7 @@
-# README
+Hey,
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple app for a family to use to derive if someone has fed or medicated their dog on a certain day or AM/PM period.
 
-Things you may want to cover:
+To get started just clone, rails db:migrate, and rails s.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Must be hosted on something like heroku to share between users. No authentication yet.
