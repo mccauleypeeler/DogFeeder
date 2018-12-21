@@ -19,23 +19,25 @@
   <% end %>
 <% end %>
 
-<h1>Medicated?</h1>
-<% if @medicatedStatus %>
-  At <%= @mostRecentCareMedicateTime.strftime("%I:%M") %>
-<% else %>
-  Not yet
-<% end %>
-<% if @mostRecentCareMedicateTime.strftime("%p") == "AM" %>
-  this morning.
-<% else %>
-  this evening.
-<% end %>
-<% if !@medicatedStatus %>
-<br>
-<%= button_to "Medicate", {action: "care", medicated: true}%>
+<% if @currentTimeObject.strftime("%p") == 'AM' %>
+  <h1>Medicated?</h1>
+  <% if @medicatedStatus %>
+    At <%= @mostRecentCareMedicateTime.strftime("%I:%M") %>
+  <% else %>
+    Not yet
+  <% end %>
+  <% if @mostRecentCareMedicateTime.strftime("%p") == "AM" %>
+    this morning.
+  <% else %>
+    this evening.
+  <% end %>
+  <% if !@medicatedStatus %>
+  <br>
+  <%= button_to "Medicate", {action: "care", medicated: true}%>
+  <% end %>
 <% end %>
 <% if @morningCare %>
   <% if @morningCare.medicatedAt %>
-    Was fed this morning at <%= @morningCare.medicatedAt.strftime("%I:%M") %>
+    Was medicated this morning at <%= @morningCare.medicatedAt.strftime("%I:%M") %>
   <% end %>
 <% end %>
