@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fed: false
+  medicated: false
+  fedAt: 2018-12-18 15:15:18
+  medicatedAt: 2018-12-18 15:15:18
+
+two:
+  fed: false
+  medicated: false
+  fedAt: 2018-12-18 15:15:18
+  medicatedAt: 2018-12-18 15:15:18

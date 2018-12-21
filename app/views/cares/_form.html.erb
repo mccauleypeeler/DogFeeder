@@ -1,0 +1,29 @@
+<%= form_with(model: care, local: true) do |form| %>
+  <% if care.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(care.errors.count, "error") %> prohibited this care from being saved:</h2>
+
+      <ul>
+      <% care.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fed %>
+    <%= form.check_box :fed %>
+    <%= form.hidden_field :fedAt, :value => Time.now%>
+  </div>
+
+  <div class="field">
+    <%= form.label :medicated %>
+    <%= form.check_box :medicated %>
+    <%= form.hidden_field :medicatedAt, :value => Time.now %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

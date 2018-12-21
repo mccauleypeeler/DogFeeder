@@ -1,0 +1,30 @@
+<h1>Fed?</h1>
+<% if @fedStatus %>
+  At <%= @mostRecentCareFeedTime.strftime("%I:%M") %>
+<% else %>
+  Not yet
+<% end %>
+<% if @mostRecentCareFeedTime.strftime("%p") == "AM" %>
+  this morning.
+<% else %>
+  this evening.
+<% end %>
+<% if !@fedStatus %>
+<br>
+<%= button_to "Feed", {action: "care", fed: true}%>
+<% end %>
+<h1>Medicated?</h1>
+<% if @medicatedStatus %>
+  At <%= @mostRecentCareMedicateTime.strftime("%I:%M") %>
+<% else %>
+  Not yet
+<% end %>
+<% if @mostRecentCareMedicateTime.strftime("%p") == "AM" %>
+  this morning.
+<% else %>
+  this evening.
+<% end %>
+<% if !@medicatedStatus %>
+<br>
+<%= button_to "Medicate", {action: "care", medicated: true}%>
+<% end %>
