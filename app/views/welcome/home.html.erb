@@ -17,7 +17,7 @@
 <div class="historyText">
   <% if @morningCare %>
     <% if @morningCare.fedAt %>
-      Was fed this morning at <%= @morningCare.fedAt.strftime("%I:%M") %>
+      Was fed at <%= @morningCare.fedAt.strftime("%I:%M") %> this morning.
     <% end %>
   <% end %>
 </div>
@@ -42,7 +42,7 @@
 <div class="historyText">
   <% if @morningCare %>
     <% if @morningCare.medicatedAt %>
-      Was medicated this morning at <%= @morningCare.medicatedAt.strftime("%I:%M") %>
+      Was medicated at <%= @morningCare.medicatedAt.strftime("%I:%M") %> this morning.
     <% end %>
   <% end %>
 </div>
