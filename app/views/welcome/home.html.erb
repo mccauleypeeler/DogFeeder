@@ -14,11 +14,13 @@
 <br>
 <%= button_to "Feed", {action: "care", fed: true}, {class: 'button'}%>
 <% end %>
-<% if @morningCare %>
-  <% if @morningCare.fedAt %>
-    Was fed this morning at <%= @morningCare.fedAt.strftime("%I:%M") %>
+<div class="historyText">
+  <% if @morningCare %>
+    <% if @morningCare.fedAt %>
+      Was fed this morning at <%= @morningCare.fedAt.strftime("%I:%M") %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <% if @currentTimeObject.strftime("%p") == 'AM' %>
   <h1>Medicated?</h1>
@@ -37,9 +39,11 @@
   <%= button_to "Medicate", {action: "care", medicated: true}%>
   <% end %>
 <% end %>
-<% if @morningCare %>
-  <% if @morningCare.medicatedAt %>
-    Was medicated this morning at <%= @morningCare.medicatedAt.strftime("%I:%M") %>
+<div class="historyText">
+  <% if @morningCare %>
+    <% if @morningCare.medicatedAt %>
+      Was medicated this morning at <%= @morningCare.medicatedAt.strftime("%I:%M") %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 </div>
