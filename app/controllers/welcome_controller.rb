@@ -40,7 +40,7 @@ class WelcomeController < ApplicationController
   end
 
   def checkTimeAndReset
-    @currentTimeObject = Time.now
+    @currentTimeObject = Time.now.in_time_zone('Eastern Time (US & Canada)')
     if @currentTimeObject.strftime("%p") == 'AM'
       @timeOfDay = "morning"
     else
